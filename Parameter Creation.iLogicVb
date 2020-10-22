@@ -1,13 +1,16 @@
 ﻿
 
-
 oMyParameter = ThisApplication.ActiveDocument.ComponentDefinition.Parameters.UserParameters
-'Setting an userParameter as inches
+
+Dim userParam As String = "DiaDrainHole"
+Dim userParamForm As String = "DiaDrainHoleForm"
+Dim paramVal As String = "3"
 
 For index As Integer = 1 To 10
-
-oParameter = oMyParameter.AddByExpression("DiaDrainHole" + index.ToString, "3", UnitsTypeEnum.kInchLengthUnits)
-oParameter=oMyParameter.AddByExpression("DiaDrainHole"+index.ToString +"Form", "3", UnitsTypeEnum.kInchLengthUnits)
-'oParameter = oMyParameter.AddByExpression("Width_inch", "3", "in")
+	
+	'Setting a userParameter as inches
+	oParameter = oMyParameter.AddByExpression(param + index.ToString, paramVal, UnitsTypeEnum.kInchLengthUnits)
+	oParameter = oMyParameter.AddByExpression(paramForm + index.ToString, paramVal, UnitsTypeEnum.kInchLengthUnits)
+	'oParameter = oMyParameter.AddByExpression("Width_inch", "3", "in")
 
 Next
