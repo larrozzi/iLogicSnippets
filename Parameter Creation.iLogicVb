@@ -3,14 +3,26 @@
 oMyParameter = ThisApplication.ActiveDocument.ComponentDefinition.Parameters.UserParameters
 
 Dim userParam As String = "DiaDrainHole"
-Dim userParamForm As String = "DiaDrainHoleForm"
-Dim paramVal As String = "3"
+
 
 For index As Integer = 1 To 10
 	
-	'Setting a userParameter as inches
-	oParameter = oMyParameter.AddByExpression(param + index.ToString, paramVal, UnitsTypeEnum.kInchLengthUnits)
-	oParameter = oMyParameter.AddByExpression(paramForm + index.ToString, paramVal, UnitsTypeEnum.kInchLengthUnits)
-	'oParameter = oMyParameter.AddByExpression("Width_inch", "3", "in")
+''	Setting a userParameter as a number in inches
+'	Dim paramVal As String = "3"
+'	oParameter = oMyParameter.AddByExpression(userParam + index.ToString, paramVal, UnitsTypeEnum.kInchLengthUnits)
+'	oParameter = oMyParameter.AddByExpression(userParamForm + index.ToString, paramVal, UnitsTypeEnum.kInchLengthUnits)
+	
+'	'Setting a UserParameter As MultiValue Text list
+'	oParameter = oMyParameter.AddByValue(userParam + index.ToString, "1.25", UnitsTypeEnum.kTextUnits)
+'	MultiValue.SetList(userParam + index.ToString, "1.25", "2.5", "n/a")
+'	oParameter = oMyParameter.AddByValue(userParam + index.ToString + "Form", "1.25", UnitsTypeEnum.kTextUnits)
+'	MultiValue.SetList(userParam + index.ToString + "Form", "1.25", "2.5", "n/a")
+	
+	'Setting a userParameter as multivalue number list
+	oParameter = oMyParameter.AddByExpression(userParam + index.ToString, "1.25", UnitsTypeEnum.kInchLengthUnits)
+	'MultiValue.SetList(userParam + index.ToString, "1.25", "2.5")
+
+	oParameter = oMyParameter.AddByValue(userParam + index.ToString + "Form", 1.25, UnitsTypeEnum.kInchLengthUnits)
+	MultiValue.SetList(userParam + index.ToString + "Form", 1.25, 2.5)
 
 Next
