@@ -26,3 +26,24 @@ For index As Integer = 1 To 10
 	MultiValue.SetList(userParam + index.ToString + "Form", 1.25, 2.5)
 
 Next
+
+
+
+'variables/values that would come from the model
+Material = "Steel"
+Thickness = 0.103587
+Width = 1.5625
+Length = 6.3987
+
+'convert values to fraction
+oT = RoundToFraction(Thickness, 1/8, RoundingMethod.RoundUp)
+oW = RoundToFraction(Width, 1/16, RoundingMethod.RoundUp)
+oL = RoundToFraction(Length, 1/32, RoundingMethod.RoundUp)
+
+'set description
+iProperties.Value("Project", "Description") = _
+oT & " " & Material & " x " & oW & " in. x " & oL & " in. Lg."
+
+'display to user
+MessageBox.Show("Description: " & vbLf & _
+iProperties.Value("Project", "Description"), "iLogic")
